@@ -17,9 +17,9 @@
    <widget class="QLabel" name="labelHeader">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>0</y>
-      <width>171</width>
+      <x>290</x>
+      <y>40</y>
+      <width>211</width>
       <height>51</height>
      </rect>
     </property>
@@ -32,7 +32,7 @@
      </font>
     </property>
     <property name="text">
-     <string>BANKOMAT</string>
+     <string>MEGAPANKKI</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -58,26 +58,26 @@
      </rect>
     </property>
     <property name="text">
-     <string>123456</string>
+     <string>xxxx</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnNosto">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>310</x>
       <y>180</y>
       <width>171</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>OTTO</string>
+     <string>NOSTO</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btnSaldo">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>310</x>
       <y>250</y>
       <width>171</width>
       <height>41</height>
@@ -87,10 +87,10 @@
      <string>SALDO</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnTapahtumat">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>310</x>
       <y>320</y>
       <width>171</width>
       <height>41</height>
@@ -124,6 +124,19 @@
     </property>
     <property name="text">
      <string>DEBIT</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnKirjUlos">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>510</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Kirjaudu ulos</string>
     </property>
    </widget>
   </widget>

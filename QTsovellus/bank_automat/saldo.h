@@ -4,19 +4,22 @@
 #include <QMainWindow>
 
 namespace Ui {
-class Saldo;
+class SALDO;
 }
 
-class Saldo : public QMainWindow
+class SALDO : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit Saldo(QWidget *parent = nullptr);
-    ~Saldo();
+    explicit SALDO(QWidget *parent = nullptr);
+    ~SALDO();
+
+private slots:
+    void on_btnNostoTakaisin_clicked();
 
 private:
-    Ui::Saldo *ui;
+    Ui::SALDO *ui;
 };
 
 #endif // SALDO_H

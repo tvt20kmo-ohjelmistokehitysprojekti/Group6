@@ -4,7 +4,6 @@
 #include "mainwindowkirjauduttu.h"
 
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -15,12 +14,15 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    ui=nullptr;
 }
 
 void MainWindow::on_pushButtonLogIn_clicked()
 {
-    QString CardID = ui->lineEditID->text();
-    MainWindowKirjauduttu *mwk=new MainWindowKirjauduttu();
+
+    MainWindowKirjauduttu *mwk=new MainWindowKirjauduttu(ui->lineEditID->text());
+
     mwk->show();
+
 }
 

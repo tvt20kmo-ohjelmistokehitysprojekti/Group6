@@ -18,15 +18,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    mainwindowkirjauduttu.cpp
+    mainwindowkirjauduttu.cpp \
+    nosto.cpp \
+    nostoconfirm.cpp \
+    nostomuusumma.cpp \
+    saldo.cpp \
+    tapahtumat.cpp
 
 HEADERS += \
     mainwindow.h \
-    mainwindowkirjauduttu.h
+    mainwindowkirjauduttu.h \
+    nosto.h \
+    nostoconfirm.h \
+    nostomuusumma.h \
+    saldo.h \
+    tapahtumat.h
 
 FORMS += \
     mainwindow.ui \
-    mainwindowkirjauduttu.ui
+    mainwindowkirjauduttu.ui \
+    nosto.ui \
+    nostoconfirm.ui \
+    nostomuusumma.ui \
+    saldo.ui \
+    tapahtumat.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

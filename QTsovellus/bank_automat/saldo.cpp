@@ -1,14 +1,23 @@
 #include "saldo.h"
 #include "ui_saldo.h"
+#include "mainwindowkirjauduttu.h"
 
-Saldo::Saldo(QWidget *parent) :
+SALDO::SALDO(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::Saldo)
+    ui(new Ui::SALDO)
 {
     ui->setupUi(this);
 }
 
-Saldo::~Saldo()
+SALDO::~SALDO()
 {
     delete ui;
+    ui=nullptr;
+}
+
+void SALDO::on_btnNostoTakaisin_clicked()
+{
+    MainWindowKirjauduttu *mwk=new MainWindowKirjauduttu(NULL);
+    this->hide();
+    mwk->show();
 }

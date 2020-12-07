@@ -4,19 +4,35 @@
 #include <QMainWindow>
 
 namespace Ui {
-class Nosto;
+class NOSTO;
 }
 
-class Nosto : public QMainWindow
+class NOSTO : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit Nosto(QWidget *parent = nullptr);
-    ~Nosto();
+    explicit NOSTO(QWidget *parent = nullptr);
+    ~NOSTO();
+
+private slots:
+    void on_btnNostoTakaisin_clicked();
+
+    void on_btnNostoMuu_clicked();
+
+    void on_btnNosto20_clicked();
+
+    void on_btnNosto40_clicked();
+
+    void on_btnNosto60_clicked();
+
+    void on_btnNosto80_clicked();
+
+    void on_btnNosto100_clicked();
 
 private:
-    Ui::Nosto *ui;
+    Ui::NOSTO *ui;
+
 };
 
 #endif // NOSTO_H

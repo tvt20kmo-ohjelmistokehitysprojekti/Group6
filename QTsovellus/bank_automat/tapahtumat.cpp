@@ -1,14 +1,23 @@
 #include "tapahtumat.h"
 #include "ui_tapahtumat.h"
+#include "mainwindowkirjauduttu.h"
 
-Tapahtumat::Tapahtumat(QWidget *parent) :
+TAPAHTUMAT::TAPAHTUMAT(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::Tapahtumat)
+    ui(new Ui::TAPAHTUMAT)
 {
     ui->setupUi(this);
 }
 
-Tapahtumat::~Tapahtumat()
+TAPAHTUMAT::~TAPAHTUMAT()
 {
     delete ui;
+    ui=nullptr;
+}
+
+void TAPAHTUMAT::on_btnNostoTakaisin_clicked()
+{
+    MainWindowKirjauduttu *mwk=new MainWindowKirjauduttu(NULL);
+    this->hide();
+    mwk->show();
 }

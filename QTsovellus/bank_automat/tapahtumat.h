@@ -4,19 +4,22 @@
 #include <QMainWindow>
 
 namespace Ui {
-class Tapahtumat;
+class TAPAHTUMAT;
 }
 
-class Tapahtumat : public QMainWindow
+class TAPAHTUMAT : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit Tapahtumat(QWidget *parent = nullptr);
-    ~Tapahtumat();
+    explicit TAPAHTUMAT(QWidget *parent = nullptr);
+    ~TAPAHTUMAT();
+
+private slots:
+    void on_btnNostoTakaisin_clicked();
 
 private:
-    Ui::Tapahtumat *ui;
+    Ui::TAPAHTUMAT *ui;
 };
 
 #endif // TAPAHTUMAT_H
