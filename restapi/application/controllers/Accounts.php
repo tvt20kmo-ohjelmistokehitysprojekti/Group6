@@ -89,7 +89,7 @@ class Accounts extends REST_Controller {
         $add_data=array(
           'firstname'=>$this->post('firstname'),
           'lastname'=>$this->post('lastname'),
-          'accountnumber'=>$this->post('accountnumber')
+          'accountnumber'=>$this->post('accountnumber'),
           'password'=>$this->post('password'),
           'accounttype'=>$this->post('accounttype'),
           'money'=>$this->post('money')

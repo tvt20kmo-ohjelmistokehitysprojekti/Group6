@@ -16,20 +16,12 @@ class History extends REST_Controller {
 
         $this->load->model('History_model');
     }
-    public function index_post()
+    public function index_get()
 
     {
+        $id=$this->post('id');
 
-            $id=$this->post('id');
+        $result=$this->History_model->get_history($id);
 
-        $result=$this->History_model->history($id);
-            if($result){
-                echo json_encode(TRUE);
-            }
-            else {
-                echo json_encode(FALSE);
-            }
-
-            
     }
 }
