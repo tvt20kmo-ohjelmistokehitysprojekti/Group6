@@ -1,5 +1,5 @@
 .DS_Store
-./restapi/vendor
+restapi/vendor
 .idea
-./restapi/application/config/database.php
-./restapi/application/config/config.php
+restapi/application/config/database.php
+restapi/application/config/config.php
