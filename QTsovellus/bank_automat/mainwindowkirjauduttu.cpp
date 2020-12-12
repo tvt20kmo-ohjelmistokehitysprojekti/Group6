@@ -3,13 +3,18 @@
 #include "nosto.h"
 #include "saldo.h"
 #include "tapahtumat.h"
+#include "mysingleton.h"
 
-MainWindowKirjauduttu::MainWindowKirjauduttu(QString CardID, QWidget *parent) :
+MainWindowKirjauduttu::MainWindowKirjauduttu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindowKirjauduttu)
 {
     ui->setupUi(this);
-    ui->label_ShowLoggedInID->setText(CardID);
+    MySingleton *my = MySingleton::getInstance();
+
+    ui->label_ShowLoggedInID->setText(my->getIdaccounts());
+
+
 }
 
 MainWindowKirjauduttu::~MainWindowKirjauduttu()
@@ -21,21 +26,21 @@ MainWindowKirjauduttu::~MainWindowKirjauduttu()
 
 void MainWindowKirjauduttu::on_btnNosto_clicked()
 {
-    NOSTO *nos=new NOSTO(NULL);
+    NOSTO *nos=new NOSTO();
     nos->show();
     this->hide();
 }
 
 void MainWindowKirjauduttu::on_btnSaldo_clicked()
 {
-    SALDO *sal=new SALDO(NULL);
+    SALDO *sal=new SALDO();
     sal->show();
     this->hide();
 }
 
 void MainWindowKirjauduttu::on_btnTapahtumat_clicked()
 {
-    TAPAHTUMAT *tap=new TAPAHTUMAT(NULL);
+    TAPAHTUMAT *tap=new TAPAHTUMAT();
     tap->show();
     this->hide();
 }

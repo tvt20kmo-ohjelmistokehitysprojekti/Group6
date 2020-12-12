@@ -12,7 +12,7 @@ class MainWindowKirjauduttu : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindowKirjauduttu(QString CardID, QWidget *parent = nullptr);
+    explicit MainWindowKirjauduttu(QWidget *parent = nullptr);
     ~MainWindowKirjauduttu();
 
 private slots:

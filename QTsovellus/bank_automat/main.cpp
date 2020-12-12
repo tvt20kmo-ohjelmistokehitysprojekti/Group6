@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "mainwindowkirjauduttu.h"
 #include <QApplication>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include <qjsondocument.h>
 
 
 int main(int argc, char *argv[])

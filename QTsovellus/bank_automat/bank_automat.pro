@@ -1,4 +1,5 @@
 QT       += core gui
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,6 +20,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mainwindowkirjauduttu.cpp \
+    mysingleton.cpp \
     nosto.cpp \
     nostoconfirm.cpp \
     nostomuusumma.cpp \
@@ -28,6 +30,7 @@ SOURCES += \
 HEADERS += \
     mainwindow.h \
     mainwindowkirjauduttu.h \
+    mysingleton.h \
     nosto.h \
     nostoconfirm.h \
     nostomuusumma.h \

@@ -12,7 +12,7 @@ class nostoConfirm : public QDialog
     Q_OBJECT
 
 public:
-    explicit nostoConfirm(QString value, QWidget *parent = nullptr);
+    explicit nostoConfirm(QString bringSumma, QWidget *parent = nullptr);
     ~nostoConfirm();
 
 private slots:

@@ -3,12 +3,17 @@
 #include "mainwindowkirjauduttu.h"
 #include "nostomuusumma.h"
 #include "nostoconfirm.h"
+#include "mysingleton.h"
 
 NOSTO::NOSTO(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::NOSTO)
 {
     ui->setupUi(this);
+    MySingleton *my = MySingleton::getInstance();
+
+    ui->label_ShowLoggedInID->setText(my->getIdaccounts());
+
 
 }
 
@@ -19,7 +24,7 @@ NOSTO::~NOSTO()
 
 void NOSTO::on_btnNostoTakaisin_clicked()
 {
-    MainWindowKirjauduttu *mwk = new MainWindowKirjauduttu(NULL);
+    MainWindowKirjauduttu *mwk = new MainWindowKirjauduttu();
     this->hide();
     mwk->show();
 }
@@ -28,40 +33,61 @@ void NOSTO::on_btnNostoMuu_clicked()
 {
     nostoMuuSumma *nms = new nostoMuuSumma();
 
+
     nms->show();
 }
 
 void NOSTO::on_btnNosto20_clicked()
 {
-   nostoConfirm *nc = new nostoConfirm("20€");
+   MySingleton *my = MySingleton::getInstance();
+
+   my->setAmount("20€");
+
+   nostoConfirm *nc = new nostoConfirm(my->getAmount());
 
    nc->show();
 }
 
 void NOSTO::on_btnNosto40_clicked()
 {
-    nostoConfirm *nc = new nostoConfirm("40€");
+    MySingleton *my = MySingleton::getInstance();
+
+    my->setAmount("40€");
+
+    nostoConfirm *nc = new nostoConfirm(my->getAmount());
 
     nc->show();
 }
 
 void NOSTO::on_btnNosto60_clicked()
 {
-    nostoConfirm *nc = new nostoConfirm("60€");
+    MySingleton *my = MySingleton::getInstance();
+
+    my->setAmount("60€");
+
+    nostoConfirm *nc = new nostoConfirm(my->getAmount());
 
     nc->show();
 }
 
 void NOSTO::on_btnNosto80_clicked()
 {
-    nostoConfirm *nc = new nostoConfirm("80€");
+    MySingleton *my = MySingleton::getInstance();
+
+    my->setAmount("80€");
+
+    nostoConfirm *nc = new nostoConfirm(my->getAmount());
 
     nc->show();
 }
 
 void NOSTO::on_btnNosto100_clicked()
 {
-    nostoConfirm *nc = new nostoConfirm("100€");
+    MySingleton *my = MySingleton::getInstance();
+
+    my->setAmount("100€");
+
+    nostoConfirm *nc = new nostoConfirm(my->getAmount());
 
     nc->show();
 }
