@@ -8,7 +8,7 @@ class Accounts_model extends CI_model
     $this->db->select('*');
     $this->db->from('accounts');
     if($id !== NULL) {
-      $this->db->where('id_account',$id);
+      $this->db->where('idaccounts',$id);
     }
     return $this->db->get()->result_array();
   }
@@ -22,7 +22,7 @@ class Accounts_model extends CI_model
     }  
   }
   function update_account($id, $update_data){
-    $this->db->where('id_account',$id);
+    $this->db->where('idaccounts',$id);
     $this->db->update('accounts',$update_data);
     if($this->db->affected_rows()>0){
       return TRUE; 
@@ -33,7 +33,7 @@ class Accounts_model extends CI_model
   }
 
   function delete_account($id){
-    $this->db->where('id_account',$id);
+    $this->db->where('idaccounts',$id);
     $this->db->delete('accounts');
     if($this->db->affected_rows()>0){
       return TRUE; 
