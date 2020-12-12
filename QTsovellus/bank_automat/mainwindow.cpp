@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <qjsondocument.h>
 #include "mysingleton.h"
+#include "loginfailed.h"
 
 
 
@@ -27,55 +28,59 @@ void MainWindow::on_pushButtonLogIn_clicked()
 {
     MySingleton *my = MySingleton::getInstance();
     my->setIdaccounts(ui->lineEditID->text());
+    QString loginID = my->getIdaccounts();
+    my->setPassword(ui->lineEditIDSalasana->text());
+    QString loginPW = my->getPassword();
 
 
 
     MainWindowKirjauduttu *mwk=new MainWindowKirjauduttu();
-    mwk->show();
 
 
 
 
- //------------------------------------------
-
-
-
-  /*  QString id_acc, passw;
-       id_acc=ui->lineEditID->text();
-       passw=ui->lineEditIDSalasana->text();
-
-
-       QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9alal00/Group6/accounts/"));
+       QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9alal00/Group6/index.php/accounts/"));
                request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
                QNetworkAccessManager nam;
-                      QNetworkReply *reply = nam.get(request);
-                      while (!reply->isFinished())
-                      {
-                          qApp->processEvents();
-                      }
-                      QByteArray response_data = reply->readAll();
+                     QNetworkReply *reply = nam.get(request);
+                     while (!reply->isFinished())
+                     {
+                         qApp->processEvents();
+                     }
+                     QByteArray response_data = reply->readAll();
 
-                      QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-                      QJsonObject jsobj = json_doc.object();
-                      QJsonArray jsarr = json_doc.array();
+                     qDebug()<<"DATA:"+response_data;
 
-                      QString iidee;
-                      foreach (const QJsonValue &value, jsarr) {
-                        QJsonObject jsob = value.toObject();
+                     reply->deleteLater();
 
-                        QString account = jsob["idaccounts"].toString();
+                     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+                     QJsonObject jsobj = json_doc.object();
+                     QJsonArray jsarr = json_doc.array();
+
+                     QString book;
+                     foreach (const QJsonValue &value, jsarr) {
+                       QJsonObject jsob = value.toObject();
+                       QString account=jsob["idaccounts"].toString();
+                       QString password=jsob["password"].toString();
+
+                       loginfailed *lf = new loginfailed();
+
+                       if (account == loginID && loginPW == password)
+                       {
+                            mwk->show();
+                            delete lf;
+                       }
+                        /*else
+                       {
+                            loginfailed *lf = new loginfailed();
+                            lf->show();
+                       }*/
 
 
 
 
+ }
 
-               if (iidee == ui->lineEditID->text())
-            {
-
-                mwk->show();
-            }
-
-        reply->deleteLater();
-}*/
 }
+

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    loginfailed.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowkirjauduttu.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
     tapahtumat.cpp
 
 HEADERS += \
+    loginfailed.h \
     mainwindow.h \
     mainwindowkirjauduttu.h \
     mysingleton.h \
@@ -38,6 +40,7 @@ HEADERS += \
     tapahtumat.h
 
 FORMS += \
+    loginfailed.ui \
     mainwindow.ui \
     mainwindowkirjauduttu.ui \
     nosto.ui \
