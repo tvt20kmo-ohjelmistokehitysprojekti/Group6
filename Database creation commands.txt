@@ -1,0 +1,79 @@
+This file isnt made for straight up forward engingeering, use these as their own sql commands
+also remember to change schemaname to whatever you want it to be
+
+CREATE SCHEMA IF NOT EXISTS `schemaname` DEFAULT CHARACTER SET utf8 ;
+USE `schemaname` ;
+
+-- -----------------------------------------------------
+-- Table `schemaname`.`accounts`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schemaname`.`accounts` (
+  `idaccounts` INT(11) NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname` VARCHAR(45) NOT NULL,
+  `accountnumber` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `accounttype` VARCHAR(45) NOT NULL,
+  `money` FLOAT NULL DEFAULT NULL,
+  PRIMARY KEY (`idaccounts`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 12
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `schemaname`.`transactions`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schemaname`.`transactions` (
+  `idtransactions` INT(11) NOT NULL AUTO_INCREMENT,
+  `amount` VARCHAR(45) NOT NULL,
+  `accountnumber` VARCHAR(45) NOT NULL,
+  `receipt_number` VARCHAR(45) NOT NULL,
+  `idaccounts` INT(11) NOT NULL,
+  PRIMARY KEY (`idtransactions`),
+  INDEX `accounts_transactions_idx` (`idaccounts` ASC),
+  CONSTRAINT `accounts_transactions`
+    FOREIGN KEY (`idaccounts`)
+    REFERENCES `schemaname`.`accounts` (`idaccounts`)
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 2088
+DEFAULT CHARACTER SET = utf8;
+
+USE `schemaname` ;
+
+-- -----------------------------------------------------
+-- procedure history
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `schemaname`$$
+CREATE PROCEDURE `history`(IN id int)
+BEGIN
+START transaction;
+SELECT * FROM transactions WHERE idaccounts = id;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure otto
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `schemaname`$$
+CREATE PROCEDURE `otto`(IN id int, IN moneyvalue float)
+BEGIN
+START transaction;
+update accounts set money=money-moneyvalue WHERE idaccounts = id AND money>=moneyvalue;
+SET @test = row_count();
+IF(@test > 0) THEN 
+COMMIT;
+INSERT INTO transactions(amount, idaccounts) 
+VALUES (moneyvalue, id);
+ELSE 
+ROLLBACK;
+END IF;
+END$$
+
+DELIMITER ;
