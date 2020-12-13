@@ -14,12 +14,10 @@ loginfailed::loginfailed(QWidget *parent) :
 loginfailed::~loginfailed()
 {
     delete ui;
+    ui=nullptr;
 }
 
 void loginfailed::on_btnLoginFailedOK_clicked()
 {
-    MainWindow *mw = new MainWindow;
-    mw->show();
     this->close();
-
 }

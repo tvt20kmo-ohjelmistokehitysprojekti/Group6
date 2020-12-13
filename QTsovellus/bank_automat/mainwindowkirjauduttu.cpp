@@ -5,11 +5,13 @@
 #include "saldo.h"
 #include "tapahtumat.h"
 #include "mysingleton.h"
+#include "loginfailed.h"
 
 MainWindowKirjauduttu::MainWindowKirjauduttu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindowKirjauduttu)
 {
+
     ui->setupUi(this);
     MySingleton *my = MySingleton::getInstance();
 

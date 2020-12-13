@@ -64,10 +64,8 @@ void TAPAHTUMAT::on_btnTapahtumatRefresh_clicked()
                      {
                        QJsonObject jsob = value.toObject();
                        tapahtumat="Kortin ID: "+jsob["idaccounts"].toString()+", Nostettu: "+jsob["amount"].toString()+"€"+"\r";
+                    }
 
-
-
-                       ui->textTapahtumat->setText(response_data);
-
-                     }
+                     //for (int i=0; i < tapahtumat.size(); i++)
+                     ui->textTapahtumat->setText(response_data);
 }

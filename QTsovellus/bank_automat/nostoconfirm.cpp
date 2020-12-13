@@ -25,6 +25,7 @@ nostoConfirm::nostoConfirm(QString bringSumma, QWidget *parent) :
 nostoConfirm::~nostoConfirm()
 {
     delete ui;
+    ui=nullptr;
 }
 
 
@@ -53,7 +54,8 @@ void nostoConfirm::on_buttonBoxConfirm_accepted()
              qApp->processEvents();
          }
          QByteArray response_data = reply->readAll();
-         qDebug()<<response_data;
+
+         //qDebug()<<response_data;
 
          if(response_data == "true")
          {

@@ -20,6 +20,7 @@ NOSTO::NOSTO(QWidget *parent) :
 NOSTO::~NOSTO()
 {
     delete ui;
+    ui=nullptr;
 }
 
 void NOSTO::on_btnNostoTakaisin_clicked()

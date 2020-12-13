@@ -35,7 +35,7 @@ void MainWindow::on_pushButtonLogIn_clicked()
     QString loginPW = my->getPassword();
 
 
-
+    loginfailed *lf = new loginfailed();
     MainWindowKirjauduttu *mwk=new MainWindowKirjauduttu();
 
 
@@ -52,7 +52,7 @@ void MainWindow::on_pushButtonLogIn_clicked()
                      }
                      QByteArray response_data = reply->readAll();
 
-                     qDebug()<<"DATA:"+response_data;
+                     //qDebug()<<"DATA:"+response_data;
 
                      reply->deleteLater();
 
@@ -66,21 +66,18 @@ void MainWindow::on_pushButtonLogIn_clicked()
                        QString account=jsob["idaccounts"].toString();
                        QString password=jsob["password"].toString();
 
-                       loginfailed *lf = new loginfailed();
+                       if ((account != loginID) || (loginPW != password))
+                       {                            
+                            lf->show();
+                       }
 
-                       if (account == loginID && loginPW == password)
+
+                       else if ((account == loginID) && (loginPW == password))
                        {
                             mwk->show();
                             this->hide();
-                            delete lf;
+
                        }
-                        /*else
-                       {
-                            loginfailed *lf = new loginfailed();
-                            lf->show();
-                       }*/
-
-
 
 
  }

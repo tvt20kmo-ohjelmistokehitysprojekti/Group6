@@ -14,6 +14,7 @@ nostoMuuSumma::nostoMuuSumma(QWidget *parent) :
 nostoMuuSumma::~nostoMuuSumma()
 {
     delete ui;
+    ui=nullptr;
 }
 
 void nostoMuuSumma::on_buttonBox_accepted()

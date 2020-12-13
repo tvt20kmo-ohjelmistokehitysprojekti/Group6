@@ -51,7 +51,7 @@ void SALDO::on_btnSaldoRefresh_clicked()
                      }
                      QByteArray response_data = reply->readAll();
 
-                     qDebug()<<"DATA:"+response_data;
+                     //qDebug()<<"DATA:"+response_data;
 
                      reply->deleteLater();
 
