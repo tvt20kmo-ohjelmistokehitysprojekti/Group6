@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btnNostoTakaisin_clicked();
 
+    void on_btnSaldoRefresh_clicked();
+
 private:
     Ui::SALDO *ui;
 };

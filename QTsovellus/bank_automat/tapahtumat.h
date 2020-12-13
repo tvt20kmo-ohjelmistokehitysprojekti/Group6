@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btnNostoTakaisin_clicked();
 
+    void on_btnTapahtumatRefresh_clicked();
+
 private:
     Ui::TAPAHTUMAT *ui;
 };

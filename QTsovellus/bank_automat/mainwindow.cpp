@@ -27,8 +27,10 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButtonLogIn_clicked()
 {
     MySingleton *my = MySingleton::getInstance();
+
     my->setIdaccounts(ui->lineEditID->text());
     QString loginID = my->getIdaccounts();
+
     my->setPassword(ui->lineEditIDSalasana->text());
     QString loginPW = my->getPassword();
 
@@ -58,7 +60,7 @@ void MainWindow::on_pushButtonLogIn_clicked()
                      QJsonObject jsobj = json_doc.object();
                      QJsonArray jsarr = json_doc.array();
 
-                     QString book;
+
                      foreach (const QJsonValue &value, jsarr) {
                        QJsonObject jsob = value.toObject();
                        QString account=jsob["idaccounts"].toString();
@@ -69,6 +71,7 @@ void MainWindow::on_pushButtonLogIn_clicked()
                        if (account == loginID && loginPW == password)
                        {
                             mwk->show();
+                            this->hide();
                             delete lf;
                        }
                         /*else

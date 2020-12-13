@@ -1,3 +1,4 @@
+#include "mainwindow.h"
 #include "mainwindowkirjauduttu.h"
 #include "ui_mainwindowkirjauduttu.h"
 #include "nosto.h"
@@ -47,5 +48,7 @@ void MainWindowKirjauduttu::on_btnTapahtumat_clicked()
 
 void MainWindowKirjauduttu::on_btnKirjUlos_clicked()
 {
+    MainWindow *mw = new MainWindow();
     this->hide();
+    mw->show();
 }

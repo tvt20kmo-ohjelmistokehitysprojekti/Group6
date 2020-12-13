@@ -59,6 +59,7 @@ void nostoConfirm::on_buttonBoxConfirm_accepted()
          {
          ui->label->setText("Nosto onnistui");
          }
+
          else
          ui->label->setText("Nosto epäonnistui");
 
