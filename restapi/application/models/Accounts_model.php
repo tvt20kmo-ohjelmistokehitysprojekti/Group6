@@ -2,18 +2,18 @@
 /**
  *
  */
-class Book_model extends CI_model
+class Accounts_model extends CI_model
 {
-  function get_book($id){
+  function get_account($id){
     $this->db->select('*');
-    $this->db->from('book');
+    $this->db->from('accounts');
     if($id !== NULL) {
-      $this->db->where('id_book',$id);
+      $this->db->where('idaccounts',$id);
     }
     return $this->db->get()->result_array();
   }
-  function add_book($add_data){
-    $this->db->insert('book',$add_data);
+  function add_account($add_data){
+    $this->db->insert('accounts',$add_data);
     if($this->db->insert_id()!==NULL){
       return $this->db->insert_id(); 
     }
@@ -21,9 +21,9 @@ class Book_model extends CI_model
       return FALSE;
     }  
   }
-  function update_book($id, $update_data){
-    $this->db->where('id_book',$id);
-    $this->db->update('book',$update_data);
+  function update_account($id, $update_data){
+    $this->db->where('idaccounts',$id);
+    $this->db->update('accounts',$update_data);
     if($this->db->affected_rows()>0){
       return TRUE; 
     }
@@ -32,9 +32,9 @@ class Book_model extends CI_model
     }
   }
 
-  function delete_book($id){
-    $this->db->where('id_book',$id);
-    $this->db->delete('book');
+  function delete_account($id){
+    $this->db->where('idaccounts',$id);
+    $this->db->delete('accounts');
     if($this->db->affected_rows()>0){
       return TRUE; 
     }

@@ -13,11 +13,11 @@ require APPPATH . 'libraries/REST_Controller.php';
  * @package         CodeIgniter
  * @subpackage      Rest Server
  * @category        Controller
- * @author          Pekka Alaluukas (edited the version made by Phil Sturgeon & Chris Kacerguis)
+ * @amount          Pekka Alaluukas (edited the version made by Phil Sturgeon & Chris Kacerguis)
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-class Book extends REST_Controller {
+class Transactions extends REST_Controller {
 
     function __construct()
     {
@@ -27,37 +27,37 @@ class Book extends REST_Controller {
         // Construct the parent class
         parent::__construct();
 
-        $this->load->model('Book_model');
+        $this->load->model('Transactions_model');
     }
 
     public function index_get($id=NULL)
     {
-        // book from a data store e.g. database  
+        // transactions from a data store e.g. database  
 
        // $id = $this->get('id');
        $id=$this->uri->segment(2);
 
-        // If the id parameter doesn't exist return all books
+        // If the id parameter doesn't exist return all transactionss
         if ($id === NULL)
         {
-            $book=$this->Book_model->get_book(NULL);
-            // Check if the book data store contains book (in case the database result returns NULL)
-            if ($book)
+            $transactions=$this->Transactions_model->get_transactions(NULL);
+            // Check if the transactions data store contains transactions (in case the database result returns NULL)
+            if ($transactions)
             {
                 // Set the response and exit
-                $this->response($book, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+                $this->response($transactions, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
             }
             else
             {
                 // Set the response and exit
                 $this->response([
                     'status' => FALSE,
-                    'message' => 'No book were found'
+                    'message' => 'No transactions were found'
                 ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
             }
         }
 
-         // Find and return a single record for a particular book.
+         // Find and return a single record for a particular transactions.
         else {
             // Validate the id.
             if ($id <= 0)
@@ -66,17 +66,17 @@ class Book extends REST_Controller {
                 $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
             }
 
-            // Get the book from the database, using the id as key for retrieval.
-            $book=$this->Book_model->get_book($id);
-            if (!empty($book))
+            // Get the transactions from the database, using the id as key for retrieval.
+            $transactions=$this->Transactions_model->get_transactions($id);
+            if (!empty($transactions))
             {
-                $this->set_response($book, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+                $this->set_response($transactions, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
             }
             else
             {
                 $this->set_response([
                     'status' => FALSE,
-                    'message' => 'book could not be found'
+                    'message' => 'transactions could not be found'
                 ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
             }
         }
@@ -85,20 +85,24 @@ class Book extends REST_Controller {
 
     public function index_post()
     {
-        // Add a new book
+        // Add a new transactions
         $add_data=array(
-          'name'=>$this->post('name'),
-          'author'=>$this->post('author'),
-          'isbn'=>$this->post('isbn')
+          'idtransactions'=>$this->post('idtransactions'),
+          'amount'=>$this->post('amount'),
+          'accountnumber'=>$this->post('accountnumber'),
+          'receipt_number'=>$this->post('receipt_number'),
+          'idaccounts'=>$this->post('idaccounts')
         );
-        $insert_id=$this->Book_model->add_book($add_data);
+        $insert_id=$this->Transactions_model->add_transactions($add_data);
         if($insert_id)
         {
             $message = [
-                'id_book' => $insert_id,
-                'name' => $this->post('name'),
-                'author' => $this->post('author'),
-                'isbn'=>$this->post('isbn'),
+                'id_transactions' => $insert_id,
+                'idtransactions' => $this->post('idtransactions'),
+                'amount' => $this->post('amount'),
+                'accountnumber'=>$this->post('accountnumber'),
+                'receipt_number'=>$this->post('receipt_number'),
+                'idaccounts'=>$this->post('idaccounts'),
                 'message' => 'Added a resource'
             ];
             $this->set_response($message, REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
@@ -115,22 +119,26 @@ class Book extends REST_Controller {
     }
     public function index_put($id=NULL)
     {
-        // Update the book
+        // Update the transactions
         $id=$this->uri->segment(2);
         $update_data=array(
-          'name'=>$this->put('name'),
-          'author'=>$this->put('author'),
-          'isbn'=>$this->put('isbn')
+          'idtransactions'=>$this->put('idtransactions'),
+          'amount'=>$this->put('amount'),
+          'accountnumber'=>$this->put('accountnumber'),
+          'receipt_number'=>$this->put('receipt_number'),
+          'idaccounts'=>$this->put('idaccounts')
         );
-        $result=$this->Book_model->update_book($id, $update_data);
+        $result=$this->Transactions_model->update_transactions($id, $update_data);
 
         if($result)
         {
             $message = [
-                'id_book' => $id,
-                'name' => $this->put('name'),
-                'author'=>$this->put('author'),
-                'isbn'=>$this->put('isbn'),
+                'id_transactions' => $id,
+                'idtransactions' => $this->put('idtransactions'),
+                'amount'=>$this->put('amount'),
+                'accountnumber'=>$this->put('accountnumber'),
+                'receipt_number'=>$this->put('receipt_number'),
+                'idaccounts'=>$this->put('idaccounts'),
                 'message' => 'Updates a resource'
             ];
 
@@ -156,11 +164,11 @@ class Book extends REST_Controller {
             // Set the response and exit
             $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
         }
-        $result=$this->Book_model->delete_book($id);
+        $result=$this->Transactions_model->delete_transactions($id);
         if ($result)
         {
           $message = [
-              'id_book' => $id,
+              'id_transactions' => $id,
               'message' => 'Deleted the resource'
           ];
           $this->set_response($message, REST_Controller::HTTP_OK);
@@ -175,6 +183,12 @@ class Book extends REST_Controller {
         }
     }
 
-
-
+    public function index_nosto($id=null)
+    {
+        $add_data=array(
+            'id'=>$this->post('id'),
+            'amount'=>$this->post('amount')
+        );
+        $insert_id=$this->Transactions_model->nosto($add_data);
+    }
 }
